@@ -1,0 +1,18 @@
+.content-option{
+  padding: 10px 5px;
+  border-radius: 0.3rem;
+  width:32%;
+  color: var(--appWhiteColor);
+}
+.income{
+  background-color: var(--appGreenColor);
+  border: 1px solid var(--appGreenColor);
+}
+.egress {
+  background-color: var(--appRedColor);
+  border: 1px solid var(--appRedColor);
+}
+.transfer{
+  background-color: var(--appGrayColor);
+  border: 1px solid var(--appGrayColor);
+}

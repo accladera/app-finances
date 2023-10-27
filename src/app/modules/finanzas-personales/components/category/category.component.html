@@ -1,0 +1,107 @@
+<div class='contanier-fluid'>
+  <div class='scvs-btn-back row align-items-center' (click)='goBack()'>
+    <mat-icon class='scfg-icon arrow_left blue' matSuffix></mat-icon>
+    Atrás
+  </div>
+
+  <div class="row justify-content-lg-end">
+
+    <button ejs-button
+            class='scvs-btn primary col-xl-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+            title='Registrar cuenta'
+            (click)='this.onCreate()'>
+      Registrar nueva categoría
+    </button>
+  </div>
+
+
+  <div class="row  scvs-table-container mt-40">
+    <div class='scvs-title row mt-10 '>
+      Categorias
+    </div>
+
+
+
+    <ejs-grid
+      #grid
+      id='grid'
+      [dataSource]='data'
+      [allowPaging]='true'
+      [allowResizing]='true'
+      [textWrapSettings]='this.wrapSettings'
+      [pageSettings]='this.pageSettings'
+      [toolbar]='toolbarOptions'
+      [locale]='this.locale'
+      width='95%'
+      rowHeight='25'
+      gridLines='Horizontal'
+    >
+      <e-columns>
+        <e-column field='nombre' headerText='Nombre de la categoría' textAlign='midle' format="yMd"
+                  width='60%'></e-column>
+        <e-column [allowResizing]='false' headerText='Acciones' width='20%' textAlign='Center'>
+          <ng-template #template let-data>
+            <div>
+              <button
+              
+                ejs-button cssClass='e-custom' type='button'
+                title='Editar categoría'
+                class=' e-flat scfg-icon open blue pointer' (click)='onEdit(data)'>
+              </button>
+              <button
+              
+                ejs-button cssClass='e-custom' type='button'
+                title='Eliminar categoría'
+                class=' e-flat scfg-icon delete gray  pointer' (click)='onDelete(data)'>
+              </button>
+            </div>
+          </ng-template>
+        </e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+  <div *ngIf="this.isFormActive" class="row mt-40  scvs-table-container">
+    <div class='scvs-title row mt-20 mb-10 align-items-center'>
+      Configuración de categoría
+    </div>
+    <div class='col-lg-12'>
+
+      <form [formGroup]='this.categoriaService.form'>
+        <div class='row'>
+          <input type='hidden' formControlName='id'/>
+          <input type='hidden' formControlName='propietarioId'/>
+          <div class='col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7  mt-sm-3'>
+            <ejs-textbox placeholder='Nombre de la categoría'
+                         autocomplete='off'
+                         formControlName='nombre'
+                         required
+                         cssClass='e-outline' floatLabelType='Auto'
+                         maxlength='100'
+                         #name
+                         (input)='inputHandlerName()'
+            ></ejs-textbox>
+            <span *ngIf='this.categoriaService.actionId!=this.enumActionsAbm.view '>
+            <small>{{maxLenghtName}}</small></span>
+            <div *ngIf='this.categoriaService.form.controls.nombre.errors'>
+              <div *ngIf='this.categoriaService.form.controls.nombre.errors.required &&
+            this.categoriaService.form.controls.nombre.touched' class='e-error'>
+                El nombre es requerido.
+              </div>
+            </div>
+          </div>
+          <div class='col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5  mt-sm-3'>
+            <button ejs-button cssClass="e-custom" class='scvs-btn icon-btn md primary' type='button'
+                    title='Guardar'
+                    *ngIf='this.categoriaService.actionId!=this.enumActionsAbm.view||isFormActive'
+                    (click)='onSubmit()'>
+              Guardar
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+</div>

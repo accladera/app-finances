@@ -1,0 +1,125 @@
+<div class='contanier-fluid'>
+  <div class='scvs-btn-back mb-40 row align-items-center' (click)='goBack()'>
+    <mat-icon class='scfg-icon arrow_left blue' matSuffix></mat-icon>
+    Atrás
+  </div>
+
+  <div class="row mt-40  scvs-table-container">
+    <div class='scvs-title row mt-20 mb-10 align-items-center'>
+      Detalle de la movimiento
+      <button
+        *ngIf="this.movimientoService.actionId === this.enumActionsAbm.view"
+        ejs-button cssClass='e-custom' type='button'
+        title='Editar movimiento'
+        class='e-flat scfg-icon edit blue pointer mx-2' (click)='onEdit()'>
+      </button>
+
+    </div>
+    <div class='col-lg-12'>
+
+      <form [formGroup]='this.movimientoService.form'>
+        <div class="row">
+          <div   *ngIf="this.movimientoService.actionId==enumActionsAbm.add"
+           class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+            <ejs-combobox
+              #cuentaId
+              allowFiltering='false'
+              [autofill]='true'
+              [allowCustom]='false'
+              formControlName='cuentaId'
+              [locale]='this.locale'
+              cssClass='e-outline' floatLabelType='Auto'
+              [dataSource]='this.dataCuentas'
+              [fields]='this.fieldsCuentas'
+              placeholder='Seleccione una cuenta'>
+            </ejs-combobox>
+          </div>
+          <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+            <ejs-combobox
+              #categoriaId
+              allowFiltering='false'
+              formControlName='categoriaId'
+              [allowCustom]='false'
+              [autofill]='true'
+              [locale]='this.locale'
+              cssClass='e-outline' floatLabelType='Auto'
+              [dataSource]='this.dataCategorias'
+              [fields]='this.fieldsCategorias'
+              placeholder='Seleccione una categoría'>
+            </ejs-combobox>
+          </div>
+          <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+            <ejs-combobox
+              #tipo
+              allowFiltering='false'
+              formControlName='tipo'
+              [allowCustom]='false'
+              [autofill]='true'
+              [locale]='this.locale'
+              cssClass='e-outline' floatLabelType='Auto'
+              [dataSource]='this.dataTipos'
+              [fields]='this.fieldsTiposMovimientos'
+              placeholder='Seleccione el tipo del movimiento'>
+            </ejs-combobox>
+          </div>
+        
+        </div>
+                  <div class='row'>
+         
+         
+          <div class='col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-sm-3'>
+            <ejs-datepicker
+              formControlName='fecha'
+              placeholder='Seleccione una fecha'
+              [min]='this.minDate'
+              [max]='this.maxDate'
+              [locale]='this.locale'
+              format='dd/MM/yyyy'
+            ></ejs-datepicker>
+          </div>
+          <div class='col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-sm-3'>
+            <ejs-numerictextbox placeholder='Monto'
+                                [showSpinButton]='false' min='0' max='2147483647'
+                                autocomplete='off'
+                                formControlName='monto'
+                                required
+                                cssClass='e-outline' floatLabelType='Auto'
+                                maxlength='10'
+                                format='n0'
+                                #monto
+            ></ejs-numerictextbox>
+            <div *ngIf='this.movimientoService.form.controls.monto.errors'>
+              <div *ngIf='this.movimientoService.form.controls.monto.errors.required &&
+            this.movimientoService.form.controls.monto.touched' class='e-error'>
+                El monto es requerido.
+              </div>
+            </div>
+          </div>
+          <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+            <ejs-textbox 
+            placeholder='Descripción'
+                         autocomplete='off'
+                         formControlName='descripcion'
+                         required
+                         cssClass='e-outline' floatLabelType='Auto'
+                         maxlength='100'
+                         #descripcion
+                        
+            ></ejs-textbox>
+          </div>
+          <div class='col-xs-12 col-md-12 col-xl-12'  *ngIf="this.movimientoService.actionId!=enumActionsAbm.view">
+            <div class='row justify-content-end '>
+              <button ejs-button cssClass='e-custom'
+                      class='scvs-btn primary col-xl-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+                      title='Guardar'
+                      (click)='this.onSubmit()'>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>  </div>
+  </div>
+
+
+</div>

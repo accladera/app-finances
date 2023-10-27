@@ -1,0 +1,63 @@
+/*#region Override Ngx Toast Styles*/
+.toast-container {
+  pointer-events: all !important;
+}
+
+.toast-custom-template {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 20px 20px 20px 80px;
+  width: 350px;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  color: #050b1e;
+  border-radius: 24px;
+  box-shadow: 0px 5px 30px rgb(42 65 98 / 7%);
+}
+
+.toast-custom-template .toast-title {
+  font-size: 1rem;
+}
+
+.toast-custom-template:hover {
+  cursor: pointer;
+}
+
+.toast-custom-template.toast-error {
+  background-color: #e5fffe;
+  background-image: url('../img/notification/error.svg');
+  background-size: 64px;
+}
+
+.toast-custom-template.toast-success {
+  background-color: #e5fffe;
+  background-image: url('../img/notification/success.svg');
+  background-size: 64px;
+}
+
+.toast-custom-template.toast-info {
+  background-color: #e5fffe;
+  background-image: url('../img/notification/error.svg');
+  background-size: 64px;
+}
+
+.toast-custom-template.toast-warning {
+  background-color: #e5fffe;
+  background-image: url('../img/notification/warning.svg');
+  background-size: 64px;
+}
+
+.toast-custom-position {
+  top: 92px;
+  right: 12px;
+}
+
+@media (max-width: 506px) {
+  .toast-custom-position {
+    top: 92px;
+    right: 12px;
+  }
+}
+/*#endregion*/

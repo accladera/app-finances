@@ -1,0 +1,272 @@
+@import '../node_modules/@syncfusion/ej2-icons/styles/material.css';
+
+/*#region Syncfusion Input Styles*/
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-notifications/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-grids/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+/*#endregion*/
+@import './assets/css/scvs-angular-material.css';
+@import './assets/css/scvs-angula-syncfusion.css';
+@import './assets/css/scfg-icons.css';
+@import './assets/css/scvs-ngx-toast.css';
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fontFamily);
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--strongColor);
+  z-index: 777;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+.footer-copyright {
+  color: aliceblue;
+}
+
+:root {
+  /*#region Will be deprecated*/
+  --strongColor: #000066;
+  --strongMediumColor: #000; /* No definido */
+  --mediumColor: #07a5a1;
+  --mediumSoftColor: #edf2ff;
+  --softColor: #fff;
+  /*#endregion Will be deprecated*/
+
+  --fontFamily: 'Open Sans', sans-serif;
+  --textGrayColor: #8289a9;
+  --textBlackColor: #050b1e;
+  --appDarkBlueColor: #000066;
+  --appLightBlueColor: #7e9cff;
+  --appLightBlueColorOp05: rgba(59, 80, 201, 0.5);
+  --appBlueColor: #3b50c9;
+  --appGreenColor: #07a5a1;
+  --appRedColor: #ff3a52;
+  --appGrayColor: #8289a9;
+  --appLightGrayColor: #edf2ff;
+  --appWhiteColor: #fff;
+  --appBlackColor: #000;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  cursor: default; /* Establece el cursor en 'none' para ocultarlo completamente */
+}
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999999;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.mb-80 {
+  margin-bottom: 80px !important;
+}
+/*Buttons*/
+
+.scvs-btn {
+  box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.7);
+  min-width: 150px ;
+  color: var(--softColor);
+  border-radius: 0.5rem ;
+  padding: 5px;
+}
+
+.scvs-btn.secondary.icon-btn {
+  color: var(--textBlackColor);
+}
+
+.scvs-btn-back {
+  display: flex;
+  color: var(--appBlueColor);
+  font-weight: 600;
+  cursor: pointer;
+}
+.scvs-title {
+  display: flex;
+  color: var(--appGrayColor);
+  font-weight: 600;
+  font-size:16px ;
+}
+.scvs-step-btn {
+  border: 3px solid #edf2ff !important;
+  border-radius: 24px !important;
+  padding: 0px !important;
+  height: 64px;
+  width: 64px;
+}
+
+.scvs-step-btn .mat-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.scvs-step-btn .mat-icon img {
+  width: 44px;
+  height: 44px;
+}
+
+.primary {
+  /*background-color: var(--strongColor);*/
+  background-color: var(--appBlueColor);
+}
+
+.secondary {
+  color: var(--textGrayColor);
+  background-color: var(--appLightGrayColor);
+}
+
+.primary.gradient {
+  background: linear-gradient(253.91deg, #01c5b9 0%, #0383cc 100%);
+}
+
+.btn-w-md-2 {
+  width: 200px;
+}
+.btn-w-md {
+  width: 250px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input.scvs-input-number::-webkit-outer-spin-button,
+input.scvs-input-number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.scvs-input-number[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/*Ngx Dropzone*/
+ngx-dropzone,
+.scvs-dropzone {
+  background: var(--appLightGrayColor) !important;
+  border-radius: 24px !important;
+  border: none !important;
+}
+
+.scvs-dropzone-preview {
+  margin: auto !important;
+  /*height: 50% !important;*/
+  /*min-width: 140px !important;*/
+  /*max-width: 140px !important;*/
+  background: white !important;
+  border-radius: 24px !important;
+  box-shadow: 2px 2px 30px rgba(42, 65, 98, 0.08);
+}
+
+.scvs-dropzone-preview ngx-dropzone-remove-badge {
+  background: var(--appLightBlueColor);
+  height: 30px;
+  width: 30px;
+}
+
+.scvs-dropzone-preview ngx-dropzone-remove-badge:hover {
+  background: var(--appLightBlueColor) !important;
+}
+
+.scvs-dropzone-preview:hover {
+  background-image: none !important;
+}
+
+.scvs-dropzone-label p {
+  font-size: 10px;
+  line-height: 1;
+  margin: auto;
+  max-width: 120px;
+}
+
+.scvs-dropzone-label .mat-icon {
+  height: 91px;
+  width: 74px;
+  margin: auto;
+  -webkit-mask-size: contain;
+}
+
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+.mat-mdc-form-field.not-underline .mat-form-field-underline {
+  height: 0 !important;
+}
+
+/* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+.mat-mdc-form-field.not-underline
+.mat-form-field-underline
+.mat-form-field-ripple {
+  height: 0 !important;
+}
+
+.info-message{
+  padding: 100px 0px;
+  border-radius: 2rem;
+  background-color: var(--appLightGrayColor);
+  color: var(--textGrayColor);
+  text-align: center;
+  font-family: var(--fontFamily);
+  font-size: 1rem;
+}
+.mt-80{
+  margin-top: 80px;
+}
+.mb-80{
+  margin-bottom: 80px;
+}
+.mb-40{
+  margin-bottom: 40px;
+}
+.mt-40{
+  margin-top: 40px;
+}
+.mt-20{
+  margin-top: 20px;
+}
+.mb-20{
+  margin-bottom: 20px;
+}
+
+.mt-10{
+  margin-top: 10px;
+}
+.mb-10{
+  margin-bottom: 10px;
+}
+
+
+/*#endregion*/
+
+
+

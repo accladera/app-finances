@@ -1,0 +1,160 @@
+.scfg-icon {
+  background-color: var(--softColor);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  height: 25px;
+  width:25px;
+
+}
+
+.scfg-icon.bg {
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+}
+
+.scfg-icon.gray {
+  background-color: var(--textGrayColor);
+}
+
+.scfg-icon.black {
+  background-color: var(--appBlackColor);
+}
+
+.scfg-icon.green {
+  background-color: var(--mediumColor);
+}
+
+.scfg-icon.blue {
+  background-color: var(--appBlueColor);
+}
+
+.scfg-icon.black {
+  background-color: var(--appBlackColor);
+}
+
+.scfg-icon.red {
+  background-color: var(--appRedColor);
+}
+
+.scfg-icon.new {
+  -webkit-mask-image: url(../icons/new.svg);
+  mask-image: url(../icons/new.svg);
+}
+
+.scfg-icon.edit {
+  -webkit-mask-image: url(../icons/edit.svg);
+  mask-image: url(../icons/edit.svg);
+}
+.scfg-icon.active {
+  -webkit-mask-image: url(../icons/active.svg);
+  mask-image: url(../icons/active.svg);
+}
+.scfg-icon.delete {
+  -webkit-mask-image: url(../icons/delete.svg);
+  mask-image: url(../icons/delete.svg);
+}
+
+.scfg-icon.open {
+  -webkit-mask-image: url(../icons/open.svg);
+  mask-image: url(../icons/open.svg);
+}
+.scfg-icon.close {
+  -webkit-mask-image: url(../icons/close.svg);
+  mask-image: url(../icons/close.svg);
+}
+
+.scfg-icon.opened_eye {
+  -webkit-mask-image: url(../icons/opened_eye.svg);
+  mask-image: url(../icons/opened_eye.svg);
+}
+
+.scfg-icon.closed_eye {
+  -webkit-mask-image: url(../icons/closed_eye.svg);
+  mask-image: url(../icons/closed_eye.svg);
+}
+
+.scfg-icon.transfer {
+  -webkit-mask-image: url(../icons/tranfer.svg);
+  mask-image: url(../icons/tranfer.svg);
+}
+
+.scfg-icon.income {
+  -webkit-mask-image: url(../icons/income.svg);
+  mask-image: url(../icons/income.svg);
+}
+
+.scfg-icon.send {
+  -webkit-mask-image: url(../icons/send.svg);
+  mask-image: url(../icons/send.svg);
+}
+
+.scfg-icon.profile {
+  -webkit-mask-image: url(../icons/profile.svg);
+  mask-image: url(../icons/profile.svg);
+}
+
+.scfg-icon.arrow_left {
+  -webkit-mask-image: url(../icons/arrow_left.svg);
+  mask-image: url(../icons/arrow_left.svg);
+}
+
+.scfg-icon.arrow_right {
+  -webkit-mask-image: url(../icons/arrow_right.svg);
+  mask-image: url(../icons/arrow_right.svg);
+}
+
+.scfg-icon.arrow_down {
+  -webkit-mask-image: url(../icons/arrow_down.svg);
+  mask-image: url(../icons/arrow_down.svg);
+}
+
+.scfg-icon.calendar {
+  -webkit-mask-image: url(../icons/calendar.svg);
+  mask-image: url(../icons/calendar.svg);
+}
+
+.scfg-icon.document {
+  -webkit-mask-image: url(../icons/document.svg);
+  mask-image: url(../icons/document.svg);
+}
+
+.scfg-icon.report {
+  -webkit-mask-image: url(../icons/report.svg);
+  mask-image: url(../icons/report.svg);
+}
+
+.scfg-icon.bg.arrow_left {
+  -webkit-mask-image: url(../icons/bg/arrow_left.svg);
+  mask-image: url(../icons/bg/arrow_left.svg);
+}
+.scfg-icon.bg.arrow_right {
+  -webkit-mask-image: url(../icons/bg/arrow_right.svg);
+  mask-image: url(../icons/bg/arrow_right.svg);
+}
+
+.scfg-icon.logout {
+  -webkit-mask-image: url(../icons/logout.svg);
+  mask-image: url(../icons/logout.svg);
+}
+.scfg-icon.square {
+  -webkit-mask-image: url(../icons/square.svg);
+  mask-image: url(../icons/square.svg);
+}
+.scfg-icon.whatsapp {
+  -webkit-mask-image: url(../icons/whatsapp.svg);
+  mask-image: url(../icons/whatsapp.svg);
+}
+.scfg-icon.phone {
+  -webkit-mask-image: url(../icons/phone.svg);
+  mask-image: url(../icons/phone.svg);
+}
+.scfg-icon.copy {
+  -webkit-mask-image: url(../icons/copy.svg);
+  mask-image: url(../icons/copy.svg);
+}
+.scfg-icon.web {
+  -webkit-mask-image: url(../icons/web.svg);
+  mask-image: url(../icons/web.svg);
+}

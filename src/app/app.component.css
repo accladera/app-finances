@@ -1,0 +1,11 @@
+.custom-w {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  width: 94% !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .custom-w {
+    width: 98% !important;
+  }
+}

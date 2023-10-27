@@ -1,0 +1,55 @@
+
+
+.errorTitle {
+  font-size: 9em;
+  color: var(--textBlackColor);
+  font-weight: bold;
+}
+
+.errorDesc {
+  color: #202020;
+  margin-top: 0px;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .errorTitle {
+    font-size: 6em;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .errorDesc {
+    text-align: center;
+  }
+
+  .errorTitle {
+    font-size: 5em;
+  }
+
+}
+
+.verticalAlign {
+  margin: calc(25vh - 105px) 0px;
+}
+
+img.spaceman {
+  animation: spaceman 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes spaceman {
+  from {
+    transform: rotate(2deg);
+  }
+  to {
+    transform: rotate(-2deg);
+  }
+}
+
+img.spacemanImg {
+  background-color: #e5e5e5;
+  border-radius: 50%;
+  opacity: 0.5;
+  width: 50px;
+  height: 50px;
+}
+  

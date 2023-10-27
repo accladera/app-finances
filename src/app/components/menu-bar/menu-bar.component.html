@@ -1,0 +1,30 @@
+<nav *ngIf="this.usuarioId != '' " class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+  <a class="navbar-brand" routerLink="/finanzas">
+    <img class="logo-img" src="assets/img/money-logo.png"/>Mis finanzas</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarCollapse" aria-controls="navbarCollapse"
+          (click)="toggleNavbar()"
+          aria-expanded="false" aria-label="Menu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }"
+       #navbarCollapse id="navbarCollapse">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finanzas/categorias">Categorias</a>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-secondary my-2 my-sm-0" (click)="onLogout()">Cerrar sesión</button>
+    </form>
+  </div>
+</nav>
+
+
+
+
+
+

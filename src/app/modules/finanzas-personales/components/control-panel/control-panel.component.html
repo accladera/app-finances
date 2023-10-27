@@ -1,0 +1,243 @@
+<div class='contanier-fluid row justify-content-center'>
+
+  <div class='scvs-btn-back row mb-40'>
+ 
+    Mis finanzas personales
+  </div>
+<div class="row justify-content-lg-end">
+
+      <button ejs-button
+              class='scvs-btn primary col-xl-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+              title='Registrar cuenta'
+              (click)='this.onCreateAccount()'>
+       Registrar nueva cuenta
+      </button>
+      <button ejs-button
+              class='scvs-btn primary col-xl-2 col-lg-3  col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+              title='Registrar movimiento'
+              (click)='this.onCreateMovimiento()'>
+        Registrar movimiento
+      </button>
+
+</div>
+  <div class="row  scvs-table-container  mt-40">
+    <div class='scvs-title row mt-20 mb-20'>
+      Resumen de cuentas
+    </div>
+
+    <ejs-grid
+      #grid
+      id='grid'
+      [dataSource]='dataCuentas'
+      [allowResizing]='true'
+      [textWrapSettings]='this.wrapSettings'
+      (toolbarClick)='clickHandlerAccountTable($event)'
+      [allowExcelExport]='true'
+      [locale]='this.locale'
+      width='100%'
+      rowHeight='25'
+      gridLines='Vertical'
+    >
+      <e-columns>
+        <e-column field='nombre' headerText='Cuenta' textAlign='Left' width='50%'></e-column>
+        <e-column field='saldo' headerText='Saldo' textAlign='Right' width='35%'></e-column>
+        <e-column [allowResizing]='false' headerText='-' width='15%' textAlign='Center'>
+          <ng-template #template let-data>
+            <div>
+              <button
+                ejs-button cssClass='e-custom' type='button'
+                title='Ver cuenta'
+                class=' e-flat scfg-icon open blue pointer' (click)='onViewAccount(data)'>
+              </button>
+              <button
+                ejs-button cssClass='e-custom' type='button'
+                title='Eliminar cuenta'
+
+                class=' e-flat scfg-icon delete gray  pointer' (click)='onDeleteAccount(data)'>
+              </button>
+            </div>
+          </ng-template>
+        </e-column>
+      </e-columns>
+      <e-aggregates>
+        <e-aggregate>
+          <e-columns>
+            <e-column field="saldo" type="sum">
+              <ng-template #footerTemplate let-data>Saldo total: {{data.sum}} </ng-template>
+            </e-column>
+          </e-columns>
+        </e-aggregate>
+      </e-aggregates>
+    </ejs-grid>
+  </div>
+
+  <div class="row  scvs-table-container mt-40">
+    <div class='scvs-title row mt-20 mb-20'>
+      Movimientos
+    </div>
+    <form [formGroup]='this.formFilterMovimientos'>
+      <div class='row'>
+        <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+          <ejs-daterangepicker
+            formControlName='dateRangePicker'
+            placeholder='Seleccione el rango de fechas'
+            [min]='this.minDate'
+            [max]='this.maxDate'
+            [locale]='this.locale'
+            [startDate]='start' [endDate]='end'
+            format='dd/MM/yyyy'
+          ></ejs-daterangepicker>
+        </div>
+        <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+          <ejs-combobox
+            #cuentaId
+            allowFiltering='false'
+            [autofill]='true'
+            [allowCustom]='false'
+            formControlName='cuentaId'
+            [locale]='locale'
+            cssClass='e-outline' floatLabelType='Auto'
+            [dataSource]='this.dataCuentas'
+            [fields]='this.fieldsCuentas'
+            placeholder='Seleccione una cuenta'>
+          </ejs-combobox>
+        </div>
+        <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+          <ejs-combobox
+            #categoriaId
+            allowFiltering='false'
+            formControlName='categoriaId'
+            [allowCustom]='false'
+            [autofill]='true'
+            [locale]='locale'
+            cssClass='e-outline' floatLabelType='Auto'
+            [dataSource]='this.dataCategorias'
+            [fields]='this.fieldsCategorias'
+            placeholder='Seleccione una categoría'>
+          </ejs-combobox>
+        </div>
+        <div class='col-xs-12 col-md-12 col-xl-12'>
+          <div class='row justify-content-end '>
+            <button ejs-button cssClass='e-custom'
+                    class='scvs-btn primary col-xl-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+                    title='Filtrar los datos'
+                    (click)='this.onSearch()'>
+              Filtrar
+            </button>
+            <button ejs-button cssClass='e-custom'
+                    class='scvs-btn secondary col-xl-2 col-lg-3  col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+                    title='Limpiar'
+                    (click)='this.onResetFilter()'>
+              Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+    <ejs-grid
+      class="mt-40"
+      #grid
+      id='gridMovimientos'
+      [dataSource]='dataMovimientos'
+      [allowPaging]='true'
+      [allowResizing]='true'
+      [textWrapSettings]='this.wrapSettings'
+      [pageSettings]='this.pageSettings'
+      [locale]='this.locale'
+      (queryCellInfo)='customizeCellMovimientos($event)'
+
+      width='95%'
+      rowHeight='25'
+      gridLines='Horizontal'
+    >
+      <e-columns>
+        <e-column field='fecha' headerText='Fecha' textAlign='midle' type='dateTime' format="dd/MM/yyyy"  width='30%'></e-column>
+
+        <e-column field='tipo' headerText='Tipo' textAlign='midle' width='20%'>
+          <ng-template #template let-data>
+            <div>
+              <span *ngIf="(data.tipo==this.enumTypeTransaction.income)" class="income">Ingreso</span>
+              <span *ngIf="(data.tipo==this.enumTypeTransaction.egress)">Egreso</span>
+            </div>
+          </ng-template>
+        </e-column>
+        <e-column field='monto' headerText='Monto' textAlign='midle' width='20%'>
+          <ng-template #template let-data>
+            <div>
+              <span *ngIf="(data.tipo==this.enumTypeTransaction.income)" class="income">+{{data.monto}}</span>
+              <span *ngIf="(data.tipo==this.enumTypeTransaction.egress)" class="egress ">-{{data.monto}}</span>
+            </div>
+          </ng-template>
+        </e-column>
+        <e-column field='cuenta' headerText='Cuenta' textAlign='midle' width='20%'></e-column>
+        <e-column field='categoria' headerText='Categoría' textAlign='midle' width='20%'></e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+
+
+  
+  <div class="row  scvs-table-container mt-40">
+    <div class='scvs-title row mt-20 mb-20'>
+      Balance
+    </div>
+    <form [formGroup]='this.formFilterBalance'>
+      <div class='row mb-10'>
+
+        <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+
+          <ejs-dropdownlist
+            allowFiltering="false"
+            [locale]='locale'
+            [filterType]="this.filterType"
+            autofill="false"
+            #mes
+            placeholder='Seleccione un periodo'
+            [dataSource]='this.dataMeses'
+            [fields]='this.fieldsMeses'
+            formControlName='mes'
+            floatLabelType='Always'
+          />
+
+        </div>
+
+        <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+          <button ejs-button cssClass='e-custom mx-2'
+                  class='scvs-btn primary' type='button'
+                  title='Filtrar los datos'
+                  (click)='this.onGetBalance()'>
+            Filtrar
+          </button>
+          <button ejs-button cssClass='e-custom'
+                  class='scvs-btn secondary mx-2' type='button'
+                  title='Limpiar'
+                  (click)='this.onResetFilterBalance()'>
+            Limpiar
+          </button>
+        </div>
+      </div>
+    </form>
+    <ejs-grid
+      #grid
+      id='gridBalance'
+      [dataSource]='this.dataBalance'
+      [locale]='this.locale'
+      (queryCellInfo)='customizeCellBalance($event)'
+      width='95%'
+      rowHeight='25'
+      gridLines='Both'
+    >
+      <e-columns>
+        <e-column field='ingreso' headerText='Ingreso' textAlign='midle'
+                  width='50%'></e-column>
+        <e-column field='gasto' headerText='Gastos' textAlign='midle' width='50%'></e-column>
+      </e-columns>
+    </ejs-grid>
+
+  </div>
+
+
+  
+</div>

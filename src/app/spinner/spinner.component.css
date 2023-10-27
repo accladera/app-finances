@@ -1,0 +1,47 @@
+.custom-spinner {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  position: relative;
+
+  background: #fff;
+  background-clip: padding-box;
+  border: solid 7px transparent;
+  border-radius: 50%;
+}
+
+.custom-spinner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin: -9px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 207.04deg at 50% 50%,
+    #586bff -198.09deg,
+    #00c2ff 0.28deg,
+    rgba(99, 96, 255, 0) 7.14deg,
+    rgba(93, 102, 255, 0) 28.04deg,
+    #586bff 161.91deg,
+    #00c2ff 360.28deg
+  );
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+  animation-name: spin;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

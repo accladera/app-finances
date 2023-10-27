@@ -1,0 +1,147 @@
+<div class='contanier-fluid'>
+  <div class='scvs-btn-back mb-40 row align-items-center' (click)='goBack()'>
+    <mat-icon class='scfg-icon arrow_left blue' matSuffix></mat-icon>
+    Atrás
+  </div>
+
+
+  <div class="row mt-40 scvs-table-container ">
+
+    <div class='scvs-title row mt-20 mb-10 align-items-center'>
+      Detalle de la cuenta
+      <button
+        *ngIf="this.cuentaService.actionId === this.enumActionsAbm.view"
+        ejs-button cssClass='e-custom' type='button'
+        title='Editar cuenta'
+        class='e-flat scfg-icon edit blue pointer mx-2' (click)='onEdit()'>
+      </button>
+
+    </div>
+
+
+    <form [formGroup]='this.cuentaService.form'>
+      <div class='row '>
+        <input type='hidden' formControlName='id'/>
+        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-5 col-xl-5  mt-sm-3'>
+          <ejs-textbox placeholder='Nombre de la cuenta'
+                       autocomplete='off'
+                       formControlName='nombre'
+                       required
+                       cssClass='e-outline' floatLabelType='Auto'
+                       maxlength='100'
+                       #nombre
+                      
+          ></ejs-textbox>
+          <span *ngIf='this.cuentaService.actionId!=this.enumActionsAbm.view '>
+            <small>{{maxLenghtName}}</small></span>
+          <div *ngIf='this.cuentaService.form.controls.nombre.errors'>
+            <div *ngIf='this.cuentaService.form.controls.nombre.errors.required &&
+            this.cuentaService.form.controls.nombre.touched' class='e-error'>
+              El nombre es requerido.
+            </div>
+          </div>
+        </div>
+        <div class='col-xs-12 col-sm-12 col-md-6 col-lg-3 col-xl-3 mt-sm-3'>
+          <ejs-numerictextbox placeholder='Saldo de la cuenta'
+                              [showSpinButton]='false' min='0' max='2147483647'
+                              autocomplete='off'
+                              formControlName='saldo'
+                              required
+                              cssClass='e-outline' floatLabelType='Auto'
+                              maxlength='10'
+                              format='n0'
+                              #saldo
+          ></ejs-numerictextbox>
+          <div *ngIf='this.cuentaService.form.controls.saldo.errors'>
+            <div *ngIf='this.cuentaService.form.controls.saldo.errors.required &&
+            this.cuentaService.form.controls.saldo.touched' class='e-error'>
+              El saldo es requerido.
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4  mt-sm-3">
+          <button ejs-button cssClass="e-custom" class='scvs-btn icon-btn md primary  mx-2' type='button'
+                  title='Guardar'
+                  *ngIf='this.cuentaService.actionId!=this.enumActionsAbm.view'
+                  (click)='onSubmit()'>
+            Guardar
+          </button>
+          <button ejs-button cssClass="e-custom" class='scvs-btn icon-btn md secondary  mx-2' type='button'
+                  title='Cancelar edición'
+                  *ngIf='this.cuentaService.actionId==this.enumActionsAbm.update'
+                  (click)='onCancelEdition()'>
+            Cancelar
+          </button>
+        </div>
+
+      </div>
+    </form>
+
+
+    <div *ngIf="this.cuentaService.actionId!=enumActionsAbm.add" class="row">
+
+      <div class='scvs-title row mt-20 mb-20'>
+       Historial de movimientos de la cuenta
+      </div>
+
+      <ejs-grid
+        #grid
+        id='grid'
+        [dataSource]='data'
+        [allowPaging]='true'
+        [allowResizing]='true'
+        [textWrapSettings]='this.wrapSettings'
+        [pageSettings]='this.pageSettings'
+        [toolbar]='toolbarOptions'
+        (toolbarClick)='clickHandler($event)'
+        (queryCellInfo)='customizeCellMovimientos($event)'
+
+        [allowExcelExport]='true'
+        [locale]='this.locale'
+        width='95%'
+        rowHeight='25'
+        gridLines='Both'
+      >
+        <e-columns>
+          <e-column field='tipo' headerText='Tipo' textAlign='midle' width='20%'>
+            <ng-template #template let-data>
+              <div>
+                <span *ngIf="(data.tipo==this.enumTypeTransaction.income)" >Ingreso</span>
+                <span *ngIf="(data.tipo==this.enumTypeTransaction.egress)">Egreso</span>
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column field='fecha' headerText='Fecha' textAlign='midle'  type='dateTime' format="dd/MM/yyyy" width='30%'></e-column>
+          <e-column field='monto' headerText='Monto' textAlign='midle' width='20%'>
+            <ng-template #template let-data>
+              <div>
+                <span *ngIf="(data.tipo==this.enumTypeTransaction.income)" >+{{data.monto}}</span>
+                <span *ngIf="(data.tipo==this.enumTypeTransaction.egress)" >-{{data.monto}}</span>
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column field='categoria' headerText='Categoría' textAlign='midle' width='20%'></e-column>
+          <e-column [allowResizing]='false' headerText='Acciones' width='15%' textAlign='Center'>
+            <ng-template #template let-data>
+              <div>
+                <button
+                  ejs-button cssClass='e-custom' type='button'
+                  title='Ver detalle'
+                  class=' e-flat scfg-icon open blue pointer' (click)='onView(data)'>
+                </button>
+                <button
+                  ejs-button cssClass='e-custom' type='button'
+                  title='Eliminar movimiento'
+                  class=' e-flat scfg-icon delete gray  pointer' (click)='onDelete(data)'>
+                </button>
+              </div>
+            </ng-template>
+          </e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,6 @@
+.income{
+  color: var(--appGreenColor);
+}
+.egress {
+  color: var(--appRedColor);
+}
